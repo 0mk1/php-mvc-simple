@@ -1,0 +1,1489 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:re="http://purl.org/atompub/rank/1.0">
+    <title type="text">Newest questions tagged rss - Stack Overflow</title>
+    <link rel="self" href="http://stackoverflow.com/feeds/tag?tagnames=rss&amp;sort=newest" type="application/atom+xml" />
+    <link rel="alternate" href="http://stackoverflow.com/questions/tagged/?tagnames=rss&amp;sort=newest" type="text/html" />
+    <subtitle>most recent 30 from stackoverflow.com</subtitle>
+    <updated>2015-04-16T08:21:16Z</updated>
+    <id>http://stackoverflow.com/feeds/tag?tagnames=rss&amp;sort=newest</id>
+    <creativeCommons:license>http://www.creativecommons.org/licenses/by-sa/3.0/rdf</creativeCommons:license> 
+    <entry>
+        <id>http://stackoverflow.com/q/29661085</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">How to Set the date as &quot;today&quot; with Yahoo Pipes (but not update everyday)?</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="yahoo-pipes" />
+        <author>
+            <name>jiffw</name>
+            <uri>http://stackoverflow.com/users/4793888</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29661085/how-to-set-the-date-as-today-with-yahoo-pipes-but-not-update-everyday" />
+        <published>2015-04-15T21:17:41Z</published>
+        <updated>2015-04-15T21:48:28Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I use fetch page to get user reviews from Google plus to then create an RSS feed for them - the most recent reviews are marked as &quot;in the last week&quot; by Google Plus - using regex I can convert this to TODAY which i then use as as the PubDate for the RSS feed.&lt;/p&gt;
+
+&lt;p&gt;The problem I have is that each Google plus review that is &quot;in the last week&quot; gets treated as new every day within the RSS feed I created because the PubDate gets changed to the current day, thus treating an &quot;old&quot; review as new.&lt;/p&gt;
+
+&lt;p&gt;Is there a way to set the date to today once, and then not update again?&lt;/p&gt;
+
+&lt;p&gt;Thanks in advance&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29658341</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">SAXparser android XML feed trouble</title>
+            <category scheme="http://stackoverflow.com/tags" term="java" />
+            <category scheme="http://stackoverflow.com/tags" term="android" />
+            <category scheme="http://stackoverflow.com/tags" term="xml" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="sax" />
+        <author>
+            <name>Gordy77</name>
+            <uri>http://stackoverflow.com/users/4793359</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29658341/saxparser-android-xml-feed-trouble" />
+        <published>2015-04-15T18:45:56Z</published>
+        <updated>2015-04-15T19:25:14Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I am very new to website and android app development so please bare with me. &lt;/p&gt;
+
+&lt;p&gt;I am having a very similar problem to the following issue. Unfortunately I have not found my answer after reading through &lt;a href=&quot;http://stackoverflow.com/questions/18199289/saxparser-android-arraylist-repeating-elements&quot;&gt;this question&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I am trying to gather an RSS feed from my website for my android app. I am using the following java script to do so.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; public class XMLHelper extends DefaultHandler {
+
+private String URL_MAIN = &quot;http://**.**.***.***/blank/blank/feed/?format=xml&quot;;
+String TAG = &quot;XMLHelper&quot;;
+
+Boolean currTag = false;
+String currTagVal = &quot;&quot;;
+public ItemValue post = null;
+public ArrayList&amp;lt;ItemValue&amp;gt; posts = new ArrayList&amp;lt;ItemValue&amp;gt;();
+
+
+public void get() {
+    try {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser mSaxParser = factory.newSAXParser();
+        XMLReader mXmlReader = mSaxParser.getXMLReader();
+        mXmlReader.setContentHandler(this);
+        InputStream mInputStream = new URL(URL_MAIN).openStream();
+        mXmlReader.parse(new InputSource(mInputStream));
+    } catch(Exception e) {
+        Log.e(TAG, &quot;Exception: &quot; + e.getMessage());
+    }
+}
+
+@Override
+public void characters(char[] ch, int start, int length)
+        throws SAXException {
+    if(currTag) {
+        currTagVal = currTagVal + new String(ch, start, length);
+        currTag = false;
+    }
+}
+
+
+@Override
+public void endElement(String uri, String localName, String qName)
+        throws SAXException {
+    currTag = false;
+
+    if(localName.equalsIgnoreCase(&quot;title&quot;))
+        post.setTitle(currTagVal);
+
+    else if (localName.equalsIgnoreCase(&quot;item&quot;)) {
+        posts.add(post);
+    }
+}
+
+@Override
+public void startElement(String uri, String localName, String qName,
+                         Attributes attributes) throws SAXException {
+    Log.i(TAG, &quot;TAG: &quot; + localName);
+
+    currTag = true;
+    currTagVal = &quot;&quot;;
+
+    if(localName.equals(&quot;item&quot;))
+        post = new ItemValue();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is pulling from the following xml.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;channel&amp;gt;
+&amp;lt;title&amp;gt;Welcome to my website&amp;lt;/title&amp;gt;
+&amp;lt;link&amp;gt;http://**.**.***.***/blank/blank/feed&amp;lt;/link&amp;gt;
+&amp;lt;atom:link href=&quot;http://**.**.***.***/blank/blank/feed/?format=xml&quot; rel=&quot;self&quot; type=&quot;application/rss+xml&quot;/&amp;gt;
+&amp;lt;description&amp;gt;Activity feed&amp;lt;/description&amp;gt;
+&amp;lt;lastBuildDate&amp;gt;Wed, 15 Apr 2015 16:21:17 +0000&amp;lt;/lastBuildDate&amp;gt;
+&amp;lt;generator&amp;gt;http://buddypress.org/?v=2.2.1&amp;lt;/generator&amp;gt;
+&amp;lt;language&amp;gt;en-US&amp;lt;/language&amp;gt;
+&amp;lt;ttl&amp;gt;30&amp;lt;/ttl&amp;gt;
+&amp;lt;sy:updatePeriod&amp;gt;hourly&amp;lt;/sy:updatePeriod&amp;gt;
+&amp;lt;sy:updateFrequency&amp;gt;2&amp;lt;/sy:updateFrequency&amp;gt;
+&amp;lt;item&amp;gt;
+&amp;lt;guid isPermaLink=&quot;false&quot;&amp;gt;822b2a07599526230c7bae1b1d0a00bf&amp;lt;/guid&amp;gt;
+&amp;lt;title&amp;gt;
+gordy77 posted an update in the group ****, **: Now the magic begins
+&amp;lt;/title&amp;gt;
+&amp;lt;link&amp;gt;http://**.**.***.***/draft-2/p/9/&amp;lt;/link&amp;gt;
+&amp;lt;pubDate&amp;gt;Mon, 13 Apr 2015 16:47:29 +0000&amp;lt;/pubDate&amp;gt;
+&amp;lt;content:encoded&amp;gt;...&amp;lt;/content:encoded&amp;gt;
+&amp;lt;slash:comments&amp;gt;0&amp;lt;/slash:comments&amp;gt;
+&amp;lt;/item&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now when I run the app I just get a blank screen and the following error.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;E/XMLHelper? Exception: null
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By changing the following code I can get the app to run but it only pulls one comment &quot;item&quot; from the RSS feed and repeats it 3 times. It is always the first &quot;item&quot; posted on that feed x3. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if(localName.equals(&quot;item&quot;))
+        post = new ItemValue();
+
+if(localName.equals(&quot;channel&quot;))
+        post = new ItemValue();
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29654969</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">What is the best way to generate youtube playlist rss feeds for an iOS app?</title>
+            <category scheme="http://stackoverflow.com/tags" term="ios" />
+            <category scheme="http://stackoverflow.com/tags" term="youtube" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Adreno</name>
+            <uri>http://stackoverflow.com/users/1426031</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29654969/what-is-the-best-way-to-generate-youtube-playlist-rss-feeds-for-an-ios-app" />
+        <published>2015-04-15T15:51:20Z</published>
+        <updated>2015-04-15T15:51:20Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;What is the best way to generate youtube playlist rss feeds for an iOS app?&lt;/p&gt;
+
+&lt;p&gt;At the moment I am using the following format:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gdata.youtube.com/feeds/api/playlists/YOUR_YOUTUBE_PLAYLIST_NUMBER&quot; rel=&quot;nofollow&quot;&gt;http://gdata.youtube.com/feeds/api/playlists/YOUR_YOUTUBE_PLAYLIST_NUMBER&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;But doesn&#39;t seem to be as widely compatible as other feed data urls I have used.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29652677</id>
+        <re:rank scheme="http://stackoverflow.com">-1</re:rank>
+        <title type="text">SimplePie Formatting - Create List</title>
+            <category scheme="http://stackoverflow.com/tags" term="formatting" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="simplepie" />
+        <author>
+            <name>Chris</name>
+            <uri>http://stackoverflow.com/users/4792210</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29652677/simplepie-formatting-create-list" />
+        <published>2015-04-15T14:13:58Z</published>
+        <updated>2015-04-15T23:40:24Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I&#39;m using the RSSSimplePie plugin for CMS Made Simple.&lt;/p&gt;
+
+&lt;p&gt;The feed in question is this &lt;a href=&quot;https://www.tidetimes.org.uk/stoke-gabriel-duncannon-tide-times.rss&quot; rel=&quot;nofollow&quot;&gt;Tide Times&lt;/a&gt;. I would like to display the times and heights as an inline list? Is this possible?&lt;/p&gt;
+
+&lt;p&gt;The template I have is this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;feeds&quot;&amp;gt;{foreach from=$feeds item=onefeed}
+&amp;lt;div class=&quot;feed-content&quot;&amp;gt;
+    {$onefeed-&amp;gt;get_content()}
+&amp;lt;/div&amp;gt;
+{/foreach}&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29647935</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Using og:image For Custom Feed Aggregator</title>
+            <category scheme="http://stackoverflow.com/tags" term="facebook" />
+            <category scheme="http://stackoverflow.com/tags" term="image" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="user-agent" />
+            <category scheme="http://stackoverflow.com/tags" term="meta" />
+        <author>
+            <name>Erve1879</name>
+            <uri>http://stackoverflow.com/users/1213425</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29647935/using-ogimage-for-custom-feed-aggregator" />
+        <published>2015-04-15T10:34:17Z</published>
+        <updated>2015-04-15T10:34:17Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I&#39;m working on a custom RSS feed aggregator which parses RSS feeds from various news-type sites, shows a summary and links back to the original site. Nothing terribly exciting. &lt;/p&gt;
+
+&lt;p&gt;I&#39;m trying to get an image for each article as well by using the original page&#39;s og:image meta tag.&lt;/p&gt;
+
+&lt;p&gt;However, I&#39;m finding that a lot of the URLs in the og:image tag return 400, 403 or 404 errors when programatically accessing the images. &lt;/p&gt;
+
+&lt;p&gt;Some seem to check for a browser&#39;s User Agent string in the headers, so for testing only, I&#39;ve set my User-Agent string header to that of Safari&#39;s: this gets some og:image links working, but it is not an acceptable solution (a crawler masquerading as a browser).&lt;/p&gt;
+
+&lt;p&gt;This does not work for the majority of images though, which continue to return 400/403.&lt;/p&gt;
+
+&lt;p&gt;Assuming that all the sites I&#39;ve tested do not have missing image files and they are proactively preventing anyone other than Facebook/Twitter from using those images, is there any other way to reliably and programmatically retrieve images to display in an RSS aggregator? &lt;/p&gt;
+
+&lt;p&gt;Feedly etc al all seem to have images for the vast majority of their aggregated content, so I&#39;m not clear as to why I&#39;m having such difficulty.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29642446</id>
+        <re:rank scheme="http://stackoverflow.com">-2</re:rank>
+        <title type="text">Null pointer exception android rss reader application</title>
+            <category scheme="http://stackoverflow.com/tags" term="java" />
+            <category scheme="http://stackoverflow.com/tags" term="android" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Dan B</name>
+            <uri>http://stackoverflow.com/users/3275821</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29642446/null-pointer-exception-android-rss-reader-application" />
+        <published>2015-04-15T05:48:41Z</published>
+        <updated>2015-04-15T06:46:59Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I was following a tutorial located at &lt;a href=&quot;http://www.androidhive.info/2012/05/android-rss-reader-application-using-sqlite-part-1/&quot; rel=&quot;nofollow&quot;&gt;http://www.androidhive.info/2012/05/android-rss-reader-application-using-sqlite-part-1/&lt;/a&gt; its a 2 parter the link to the 2nd is at the bottom of the first.  I typed all the code up and then tried to compile it but I keep receiving this error      Caused by: java.lang.NullPointerException
+            at bsu.edu.cs339.nbanews.MainActivity.onCreate(MainActivity.java:52) which is this line of code         &lt;/p&gt;
+
+&lt;p&gt;lv.setOnItemClickListener(new OnItemClickListener() {&lt;/p&gt;
+
+&lt;p&gt;This project was huge and comes with 9 classes and 9 different xml files so I didnt include them but the url does have all these classes included from the tutorial.  Out of curiosity I pasted his code thinking maybe I mistyped something but it gave me the same error on the same line.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class MainActivity extends Activity {
+
+private ProgressDialog pDialog;
+ArrayList&amp;lt;HashMap&amp;lt;String, String&amp;gt;&amp;gt; rssFeedList;
+RSSParser rssParser = new RSSParser();
+RSSFeed rssFeed;
+ImageButton btnAddSite;
+String[] sqliteIds;
+
+public static String TAG_ID = &quot;id&quot;;
+public static String TAG_TITLE = &quot;title&quot;;
+public static String TAG_LINK = &quot;link&quot;;
+ListView lv;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.site_list);
+
+    btnAddSite = (ImageButton) findViewById(R.id.btnAddSite);
+
+    rssFeedList = new ArrayList&amp;lt;HashMap&amp;lt;String, String&amp;gt;&amp;gt;();
+
+    new loadStoreSites().execute();
+    lv = (ListView) findViewById(R.id.list);
+    lv.setOnItemClickListener(new OnItemClickListener() {
+
+        public void onItemClick(AdapterView&amp;lt;?&amp;gt; parent, View view,
+                                int position, long id) {
+            String sqlite_id = ((TextView) view.findViewById(R.id.
+                    sqlite_id)).getText().toString();
+            Intent in = new Intent(getApplicationContext(),
+                    ListRssItemsActivity.class);
+            in.putExtra(TAG_ID, sqlite_id);
+            startActivity(in);
+        }
+    });
+
+    btnAddSite.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getApplicationContext(),
+                    AddNewSiteActivity.class);
+            startActivityForResult(i, 100);
+        }
+    });
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (resultCode == 100) {
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+}
+
+@Override
+public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo
+        menuInfo) {
+   if (v.getId()==R.id.list) {
+       menu.setHeaderTitle(&quot;Delete&quot;);
+       menu.add(Menu.NONE, 0, 0, &quot;Delete Feed&quot;);
+   }
+}
+
+@Override
+public boolean onContextItemSelected(MenuItem item) {
+   AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)
+           item.getMenuInfo();
+    int menuItemIndex = item.getItemId();
+    if(menuItemIndex == 0){
+        RSSDatabaseHandler rssDb = new RSSDatabaseHandler(getApplicationContext());
+        WebSite site = new WebSite();
+        site.setId(Integer.parseInt(sqliteIds[info.position]));
+        rssDb.deleteSite(site);
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+    return true;
+}
+
+class loadStoreSites extends AsyncTask&amp;lt;String, String, String&amp;gt; {
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        pDialog = new ProgressDialog(
+                MainActivity.this);
+        pDialog.setMessage(&quot;Loading websites ...&quot;);
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(false);
+        pDialog.show();
+    }
+
+    protected String doInBackground(String... args) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                RSSDatabaseHandler rssDb = new RSSDatabaseHandler(
+                        getApplicationContext());
+                List&amp;lt;WebSite&amp;gt; siteList = rssDb.getAllSites();
+                sqliteIds = new String[siteList.size()];
+
+                for (int i = 0; i &amp;lt; siteList.size(); i++) {
+
+                    WebSite s = siteList.get(i);
+                    HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();
+                    map.put(TAG_ID, s.getId().toString());
+                    map.put(TAG_TITLE, s.getTitle().toString());
+                    map.put(TAG_LINK, s.getLink().toString());
+                    rssFeedList.add(map);
+                    sqliteIds[i] = s.getId().toString();
+                }
+
+                ListAdapter adapter = new SimpleAdapter(
+                        MainActivity.this,
+                        rssFeedList, R.layout.site_list_row,
+                        new String[] { TAG_ID, TAG_TITLE, TAG_LINK },
+                        new int[] { R.id.sqlite_id, R.id.title, R.id.link });
+
+                lv.setAdapter(adapter);
+                registerForContextMenu(lv);
+            }
+        });
+        return null;
+    }
+
+    protected void onPostExecute(String args) {
+
+        pDialog.dismiss();
+    }
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29642363</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Getting the error &quot;The underlying connection was closed: An unexpected error occurred on a send&quot; when consuming an Atom feed</title>
+            <category scheme="http://stackoverflow.com/tags" term="c#" />
+            <category scheme="http://stackoverflow.com/tags" term="asp.net" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="atom" />
+        <author>
+            <name>DomBurf</name>
+            <uri>http://stackoverflow.com/users/3668703</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29642363/getting-the-error-the-underlying-connection-was-closed-an-unexpected-error-occ" />
+        <published>2015-04-15T05:40:30Z</published>
+        <updated>2015-04-15T05:40:30Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I&#39;m trying to display my Github activity feed on my web site but am getting the above error.&lt;/p&gt;
+
+&lt;p&gt;I have increased the timeout in my web.config as follows.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;httpRuntime executionTimeout=&quot;90&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I get the error when attempting to load the feed into an XmlDocument as in the line of code below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;XDocument xDoc = XDocument.Load(rssFeedUrl); //get error on this line of code
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Any help or suggestions much appreciated.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29636316</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Rendering mRSS feed in Chrome using jsapi</title>
+            <category scheme="http://stackoverflow.com/tags" term="google-chrome" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="jsapi" />
+        <author>
+            <name>tomdelalune</name>
+            <uri>http://stackoverflow.com/users/2391383</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29636316/rendering-mrss-feed-in-chrome-using-jsapi" />
+        <published>2015-04-14T19:58:42Z</published>
+        <updated>2015-04-14T19:58:42Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;Using google feed api to parse and render a mRSS feed.
+I am having issue in chrome as it doesn&#39;t show the content...&lt;br&gt;
+&lt;strong&gt;&lt;a href=&quot;http://jsfiddle.net/photous/guafh1ab/&quot; rel=&quot;nofollow&quot;&gt;JSFIDDLE&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Any idea why is that?...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function initialize() {
+    var feed = new google.feeds.Feed(&quot;http://www.wdcdn.net/rss/presentation/library/client/robotrepair/id/a51a000c78e6997a1b7d422247cad813&quot;);
+    feed.setNumEntries(99);
+    feed.load(function(result) {
+        if (!result.error) {
+            var container = document.getElementById(&quot;feed&quot;);
+            for (var i = 0; i &amp;lt; result.feed.entries.length; i++) {
+                var entry = result.feed.entries[i];
+                var img = document.createElement(&quot;img&quot;);
+                if (entry.mediaGroups) {
+                    var imgSrc = entry.mediaGroups[0].contents[0].thumbnails[0].url;
+                    img.setAttribute(&quot;src&quot;, imgSrc);
+                    container.appendChild(img);
+                }
+            }
+        }
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29633586</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Feeds not opening with domain in blogger</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="feed" />
+            <category scheme="http://stackoverflow.com/tags" term="blogger" />
+            <category scheme="http://stackoverflow.com/tags" term="feeds" />
+            <category scheme="http://stackoverflow.com/tags" term="feedburner" />
+        <author>
+            <name>vijaykumar</name>
+            <uri>http://stackoverflow.com/users/4471206</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29633586/feeds-not-opening-with-domain-in-blogger" />
+        <published>2015-04-14T17:19:22Z</published>
+        <updated>2015-04-15T13:53:32Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;Iam using feed burner my main problem is &lt;a href=&quot;http://www.bloggingwala.com/feed&quot; rel=&quot;nofollow&quot;&gt;This&lt;/a&gt;
+I don&#39;t know why my website not caches feeds by using domain.com/feed. 
+While other &lt;a href=&quot;http://labnol.org/feed&quot; rel=&quot;nofollow&quot;&gt;websites&lt;/a&gt; or blogs are usually redirecting to the feeds to show in the webpage. 
+I don&#39;t know where the problem occurs I have used ping feed burner and also visited many websites by searching my problem in Google.
+Should i add any code in my editor to do this. Thanks in advance.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29628088</id>
+        <re:rank scheme="http://stackoverflow.com">2</re:rank>
+        <title type="text">Printing thumbnails using simpleXML parse - how to return all?</title>
+            <category scheme="http://stackoverflow.com/tags" term="php" />
+            <category scheme="http://stackoverflow.com/tags" term="xml" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="simplexml" />
+        <author>
+            <name>NickR93</name>
+            <uri>http://stackoverflow.com/users/4122049</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29628088/printing-thumbnails-using-simplexml-parse-how-to-return-all" />
+        <published>2015-04-14T13:03:09Z</published>
+        <updated>2015-04-15T03:49:13Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I have looked for this answer to this question on here but I can&#39;t seem to find anything which is relevant to this particular issue.&lt;/p&gt;
+
+&lt;p&gt;I am currently using simpleXML to parse an RSS feed, in order to return thumbnail images by going through the nodes to parse &quot;media:thumbnail&quot;. I have managed to do this and return all thumbnail URLs, so I know that I am getting to the right content, like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php 
+
+$url = &quot;http://feeds.bbci.co.uk/news/rss.xml?edition=uk&quot;;
+$xml = simplexml_load_file($url);
+
+foreach($xml-&amp;gt;channel-&amp;gt;item as $item) {
+$media = $item-&amp;gt;children(&#39;media&#39;, &#39;http://search.yahoo.com/mrss/&#39;);
+foreach($media-&amp;gt;thumbnail as $thumb) {
+   echo $thumb-&amp;gt;attributes()-&amp;gt;url;
+}
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This echos all the image urls. But when I store this in to a variable and try to echo this later as the img src, it only returns one image, rather than all:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php 
+
+$url = &quot;http://feeds.bbci.co.uk/news/rss.xml?edition=uk&quot;;
+$xml = simplexml_load_file($url);
+
+foreach($xml-&amp;gt;channel-&amp;gt;item as $item) {
+$media = $item-&amp;gt;children(&#39;media&#39;, &#39;http://search.yahoo.com/mrss/&#39;);
+foreach($media-&amp;gt;thumbnail as $thumb) {
+   $image = $thumb-&amp;gt;attributes()-&amp;gt;url;
+}
+}
+?&amp;gt;
+
+&amp;lt;div&amp;gt;&amp;lt;img src = &amp;lt;?php echo $image; ?&amp;gt; /&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;How can I echo all of the URLs in to individual images? Thanks for looking.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29618940</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Multiple feed is not working properly with SimplePie</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="simplepie" />
+        <author>
+            <name>Roon13</name>
+            <uri>http://stackoverflow.com/users/4462906</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29618940/multiple-feed-is-not-working-properly-with-simplepie" />
+        <published>2015-04-14T03:59:49Z</published>
+        <updated>2015-04-14T03:59:49Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I am trying to get multiple feeds from various sites. But whenever I run the script it gives me feeds from either one site and sometimes from all the sites specified in the script.
+Here is the code from &lt;strong&gt;Simplepie&lt;/strong&gt; -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/ Include the SimplePie library
+// For 1.0-1.2:
+#require_once(&#39;simplepie.inc&#39;);
+// For 1.3+:
+require_once(&#39;autoloader.php&#39;);
+
+// Create a new SimplePie object
+$feed = new SimplePie();
+
+$feed-&amp;gt;set_feed_url(array(
+&#39;http://digg.com/rss/index.xml&#39;,
+&#39;http://feeds.tuaw.com/weblogsinc/tuaw&#39;,
+&#39;http://feeds.uneasysilence.com/uneasysilence/blog&#39;
+));
+
+// We&#39;ll use favicon caching here (Optional)
+$feed-&amp;gt;set_favicon_handler(&#39;handler_image.php&#39;);
+
+// Initialize the feed object
+$feed-&amp;gt;init();
+
+// This will work if all of the feeds accept the same settings.
+$feed-&amp;gt;handle_content_type();
+
+// Begin our XHTML markup
+?&amp;gt;&amp;lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+    &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&amp;gt;
+&amp;lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&amp;gt; 
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;Awesome feeds&amp;lt;/title&amp;gt;
+&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;../demo/for_the_demo/simplepie.css&quot;
+type=&quot;text/css&quot; media=&quot;screen&quot; charset=&quot;utf-8&quot; /&amp;gt;
+
+&amp;lt;style type=&quot;text/css&quot;&amp;gt;
+h4.title {
+    /* We&#39;re going to add some space next to the titles so we can fit 
+the 16x16 favicon image. */
+    background-color:transparent;
+    background-repeat:no-repeat;
+    background-position:0 1px;
+    padding-left:20px;
+}
+&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&quot;site&quot;&amp;gt;
+
+    &amp;lt;?php if ($feed-&amp;gt;error): ?&amp;gt;
+    &amp;lt;p&amp;gt;&amp;lt;?php echo $feed-&amp;gt;error; ?&amp;gt;&amp;lt;/p&amp;gt;
+    &amp;lt;?php endif; ?&amp;gt;
+
+    &amp;lt;h1&amp;gt;Awesome feeds&amp;lt;/h1&amp;gt;
+
+    &amp;lt;?php foreach ($feed-&amp;gt;get_items() as $item): ?&amp;gt;
+
+    &amp;lt;div class=&quot;chunk&quot;&amp;gt;
+
+        &amp;lt;?php /* Here, we&#39;ll use the $item-&amp;gt;get_feed() method to gain access to the parent feed-level data for the specified item. */ ?&amp;gt;
+        &amp;lt;h4 class=&quot;title&quot; style=&quot;background-image:url(&amp;lt;?php $feed = $item-&amp;gt;get_feed(); echo $feed-&amp;gt;get_favicon(); ?&amp;gt;);&quot;&amp;gt;&amp;lt;a href=&quot;&amp;lt;?php echo $item-&amp;gt;get_permalink(); ?&amp;gt;&quot;&amp;gt;&amp;lt;?php echo $item-&amp;gt;get_title(); ?&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/h4&amp;gt;
+
+        &amp;lt;?php echo $item-&amp;gt;get_content(); ?&amp;gt;
+
+        &amp;lt;p class=&quot;footnote&quot;&amp;gt;Source: &amp;lt;a href=&quot;&amp;lt;?php $feed = $item-&amp;gt;get_feed(); echo $feed-&amp;gt;get_permalink(); ?&amp;gt;&quot;&amp;gt;&amp;lt;?php $feed = $item-&amp;gt;get_feed(); echo $feed-&amp;gt;get_title(); ?&amp;gt;&amp;lt;/a&amp;gt; | &amp;lt;?php echo $item-&amp;gt;get_date(&#39;j M Y | g:i a T&#39;); ?&amp;gt;&amp;lt;/p&amp;gt;
+
+    &amp;lt;/div&amp;gt;
+
+    &amp;lt;?php endforeach; ?&amp;gt;
+
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Does anybody have idea what is going wrong with the current script??
+I searched for information related to this but I got no help.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29596390</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">how to Parse a HTML Page to find RSS Links for a iOS Safari App Extension</title>
+            <category scheme="http://stackoverflow.com/tags" term="html" />
+            <category scheme="http://stackoverflow.com/tags" term="ios" />
+            <category scheme="http://stackoverflow.com/tags" term="safari" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="ios-app-extension" />
+        <author>
+            <name>Ash-Bash32</name>
+            <uri>http://stackoverflow.com/users/1858000</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29596390/how-to-parse-a-html-page-to-find-rss-links-for-a-ios-safari-app-extension" />
+        <published>2015-04-13T00:49:13Z</published>
+        <updated>2015-04-13T00:49:13Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;Im trying to find a Example/Tutorial of a Way to Parse a HTML File From Safari URL for My App Extension that I&#39;m making. My Problem is that i can&#39;t find a way to Parse the HTMl File and look for any RSS Links and then Display the Results in a TableView With its Correct Title and RSS URL.(Of Cause if No Results Come Back Give a Error Message Stating theres no RSS Links)&lt;/p&gt;
+
+&lt;p&gt;Heres a Mock up off my App Extension :-
+&lt;img src=&quot;http://i.stack.imgur.com/wlFne.png&quot; alt=&quot;enter image description here&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;So is there a tutorial or something that can help with my Problem&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29595863</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Meteor rss project returns exit code 8</title>
+            <category scheme="http://stackoverflow.com/tags" term="javascript" />
+            <category scheme="http://stackoverflow.com/tags" term="meteor" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Actionman</name>
+            <uri>http://stackoverflow.com/users/3225038</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29595863/meteor-rss-project-returns-exit-code-8" />
+        <published>2015-04-12T23:26:44Z</published>
+        <updated>2015-04-12T23:26:44Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I am trying to run the project at &lt;a href=&quot;https://github.com/AVGP/meteor-example-meteorss&quot; rel=&quot;nofollow&quot;&gt;https://github.com/AVGP/meteor-example-meteorss&lt;/a&gt; but it keeps crashing when I try to run it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;W20150412-19:16:54.544(-4)? (STDERR)          
+W20150412-19:16:54.943(-4)? (STDERR) /Users/user/.meteor/packages/meteor-tool/.1.0.38.z83ibe++os.osx.x86_64+web.browser+web.cordova/meteor-tool-os.osx.x86_64/dev_bundle/server-lib/node_modules/fibers/future.js:173
+W20150412-19:16:54.944(-4)? (STDERR)                        throw(ex);
+W20150412-19:16:54.944(-4)? (STDERR)                              ^
+W20150412-19:16:54.944(-4)? (STDERR) TypeError: undefined is not a function
+W20150412-19:16:54.945(-4)? (STDERR)     at app/RSSReader.js:24:20
+W20150412-19:16:54.945(-4)? (STDERR)     at app/RSSReader.js:49:3
+W20150412-19:16:54.946(-4)? (STDERR)     at /Users/user/Work/RSSReader/.meteor/local/build/programs/server/boot.js:175:10
+W20150412-19:16:54.946(-4)? (STDERR)     at Array.forEach (native)
+W20150412-19:16:54.946(-4)? (STDERR)     at Function._.each._.forEach (/Users/user/.meteor/packages/meteor-tool/.1.0.38.z83ibe++os.osx.x86_64+web.browser+web.cordova/meteor-tool-os.osx.x86_64/dev_bundle/server-lib/node_modules/underscore/underscore.js:79:11)
+W20150412-19:16:54.946(-4)? (STDERR)     at /Users/user/Work/RSSReader/.meteor/local/build/programs/server/boot.js:86:5
+=&amp;gt; Exited with code: 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not sure how to fix the error or what it is exactly.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29587956</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Android Parsing Amazon XML feed rss with image url</title>
+            <category scheme="http://stackoverflow.com/tags" term="android" />
+            <category scheme="http://stackoverflow.com/tags" term="xml" />
+            <category scheme="http://stackoverflow.com/tags" term="parsing" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Nonjoe</name>
+            <uri>http://stackoverflow.com/users/4509224</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29587956/android-parsing-amazon-xml-feed-rss-with-image-url" />
+        <published>2015-04-12T09:31:09Z</published>
+        <updated>2015-04-12T09:31:09Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I&#39;m parsing this Amazon xml rss feed: &lt;a href=&quot;http://www.amazon.com/gp/rss/bestsellers/books/ref=zg_bs_books_rsslink/182-7950400-1121525&quot; rel=&quot;nofollow&quot;&gt;http://www.amazon.com/gp/rss/bestsellers/books/ref=zg_bs_books_rsslink/182-7950400-1121525&lt;/a&gt; and correctly getting titles and authors to put in a listview.
+Now I would parse the cover image too and correctly obtaining the image link.
+Tried to modify the custom adapter but I&#39;m not able to.
+Created an ImageView per row but how populate it?
+Help or suggestion would be much appreciated. Thanks in advance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class AmActivity extends Activity {
+ImageView imageView;
+Bitmap bitmap;
+ProgressDialog pDialog;
+
+private class RowItem {
+    String title = null;
+    String description = null;
+    String url = null;
+
+    public RowItem(String title, String description, String url) {
+        this.title = title;
+        this.description = description;
+        this.url = url;
+    }
+}
+
+private class DownloadXMLTask extends AsyncTask&amp;lt;String, Void, String&amp;gt; {
+
+    ArrayList&amp;lt;RowItem&amp;gt; items = null;
+
+    public DownloadXMLTask(ArrayList&amp;lt;RowItem&amp;gt; items) {
+        this.items = items;
+    }
+
+    private String getNodeValue(Element entry, String tag) {
+        Element tagElement = (Element) entry.getElementsByTagName(tag).item(0);
+        return tagElement.getFirstChild().getNodeValue();
+    }
+
+    public String downloadAndParseXML(String url) {
+        try {
+            InputStream in = new java.net.URL(url).openStream();
+
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document dom = db.parse(in);
+            Element documentElement = dom.getDocumentElement();
+
+            NodeList nodes = documentElement.getElementsByTagName(&quot;item&quot;);
+
+            for (int i = 0; i &amp;lt; nodes.getLength(); i++) {
+                Element entry = (Element) nodes.item(i);
+
+                String title = getNodeValue(entry, &quot;title&quot;);
+                title= title.substring(4);
+                //title = title.subString(0, title.getIndex(&quot;(&quot;) - 1);
+                String description = getNodeValue(entry, &quot;description&quot;);
+                int startIndex = description.lastIndexOf(&quot;Contributor&quot;);
+
+                String newstr = description.substring(startIndex);
+                newstr = newstr.substring(13);
+                String str = newstr.substring(0, newstr.indexOf(&#39; &#39;));
+                String stri = newstr.substring(newstr.indexOf(&#39; &#39;)+1);
+                String def = str.concat(&quot; &quot;).concat(stri);
+                def = def.substring(0, def.indexOf(&#39;&amp;lt;&#39;)-1);
+                String img=description.substring(description.indexOf(&quot;img src=&quot;)+9);
+                img=img.substring(0, img.indexOf(&quot;jpg&quot;)+3);
+                //int endIndex = description.lastIndexOf(&quot;span&quot;);
+                //String str= newstr.substring(endIndex);
+
+                String link = getNodeValue(entry, &quot;link&quot;);
+                // add them to your list
+                items.add(new RowItem(title, def, link));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    protected String doInBackground(String... urls) {
+        if (urls.length &amp;lt;= 0)
+            return null;
+        return downloadAndParseXML(urls[0]);
+    }
+    protected void onPostExecute(String result) {
+        updateList(items);
+    }
+}
+
+public void updateList(ArrayList&amp;lt;RowItem&amp;gt; items) {
+    CustomArrayAdapter adapter = new CustomArrayAdapter(this,
+            R.layout.rowview, items);
+    listView.setAdapter(adapter);
+}
+
+private class CustomArrayAdapter extends ArrayAdapter&amp;lt;RowItem&amp;gt; {
+    Context context;
+    List&amp;lt;RowItem&amp;gt; items;
+
+    private class ViewHolder {
+        public TextView title;
+        public TextView description;
+        public ImageView imageView;
+    }
+
+    public CustomArrayAdapter(Context context, int resource,
+                              List&amp;lt;RowItem&amp;gt; items) {
+        super(context, resource, items);
+        this.context = context;
+        this.items = items;
+    }
+
+    @Override
+    public View getView(int position, View rowView, ViewGroup parent){
+    //reuse the rowView if possible - for efficiency and less memory consumption
+    if (rowView == null){
+
+        LayoutInflater inflater = (LayoutInflater)
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    rowView = inflater.inflate(R.layout.rowview, null);
+    //configure view holder
+    ViewHolder viewHolder = new ViewHolder();
+        viewHolder.title = (TextView)
+                rowView.findViewById(R.id.title);
+        viewHolder.description = (TextView)
+                rowView.findViewById(R.id.description);
+        viewHolder.imageView = (ImageView)
+                rowView.findViewById(R.id.imageView);
+        rowView.setTag(viewHolder);
+
+    }
+        //set the view
+    ViewHolder holder = (ViewHolder) rowView.getTag();
+        RowItem item = items.get(position);
+        holder.title.setText(item.title);
+        holder.description.setText(item.description);
+
+        return rowView;
+    }
+}
+
+ListView listView;
+ArrayList&amp;lt;RowItem&amp;gt; items;
+Context context;
+
+
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_am);
+
+  context = getApplicationContext();
+  ActionBar actionBar = getActionBar();
+  assert actionBar != null;
+  actionBar.hide();
+
+  listView = (ListView) findViewById(R.id.list);
+
+  items = new ArrayList&amp;lt;RowItem&amp;gt;();
+
+  new DownloadXMLTask(items).execute(getString(R.string.feedurl));
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29585571</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">How can I do export of rss-feed with my notes from the inoreader.com folder?</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="feed" />
+        <author>
+            <name>Stas</name>
+            <uri>http://stackoverflow.com/users/4762126</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29585571/how-can-i-do-export-of-rss-feed-with-my-notes-from-the-inoreader-com-folder" />
+        <published>2015-04-12T03:19:05Z</published>
+        <updated>2015-04-12T08:42:23Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I don&#39;t see the notes in the generated xml.&lt;br&gt;
+How I can add this field to the output xml?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29582141</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Im trying to extract images from the following xml feed using ns regular expression but i can&#39;t seem to get the pattern [on hold]</title>
+            <category scheme="http://stackoverflow.com/tags" term="regex" />
+            <category scheme="http://stackoverflow.com/tags" term="xml" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Nikhil Gilbert</name>
+            <uri>http://stackoverflow.com/users/4777909</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29582141/im-trying-to-extract-images-from-the-following-xml-feed-using-ns-regular-express" />
+        <published>2015-04-11T19:34:24Z</published>
+        <updated>2015-04-11T19:51:55Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;xml feed: &lt;a href=&quot;http://varsitynewspaper.co.za/rss.xml&quot; rel=&quot;nofollow&quot;&gt;http://varsitynewspaper.co.za/rss.xml&lt;/a&gt;
+im currently using swift to parse these images into an iphone app
+here are the ones I&#39;ve tried:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/&amp;lt;img[^&amp;gt;]+src=&quot;([^&quot;&amp;gt;]+)&quot;/
+
+&quot;src=\&quot;([^\&quot;]+)\&quot;&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;i know its only two, but i just don&#39;t seem to be getting how this pattern works&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29581650</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Incorrect rss encoding sometimes</title>
+            <category scheme="http://stackoverflow.com/tags" term="c#" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="windows-phone" />
+        <author>
+            <name>juhariis</name>
+            <uri>http://stackoverflow.com/users/573279</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29581650/incorrect-rss-encoding-sometimes" />
+        <published>2015-04-11T18:42:11Z</published>
+        <updated>2015-04-15T14:23:21Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I am working on rss feed reader project for Windows Phone. I use the construct below for reading feed in.
+It seems to work fine for the 200+ feeds I track - apart for two feeds from NASA &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&quot;http://www.nasa.gov/rss/dyn/TWAN_vodcast.rss&quot;
+&quot;http://www.nasa.gov/rss/dyn/TWAN_podcast.rss&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;for which I get quite frequently problems. Not always and not the same feed, but a few times a week instead of nice utf-8 textual rss feed I get non textual stuff starting (in decimal) &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;31, 65533, 8, 0, 0.. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The strange thing is that reading the feed at the same time with e.g. Chrome shows always good textual result. &lt;/p&gt;
+
+&lt;p&gt;Is there something trivial I am missing here? Some black magic that Chrome can do but Windows Phone cannot? Is there some way I can &quot;fix&quot; in my app what Windows Phone fails here? For compatibility reasons I am building for WP7.8 on VS Express 2012&lt;/p&gt;
+
+&lt;p&gt;(and yes, I e-mailed to feed owner some time ago but did not get any reply)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    public void GetFeed(string _RssUri)
+    {
+        WebClient wc = new WebClient();
+        wc.OpenReadCompleted += wc_OpenReadCompleted;
+        wc.OpenReadAsync(new Uri(_RssUri));
+    }
+
+    void wc_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
+    {
+        if (e.Error == null)
+        {
+            using (StreamReader sr = new StreamReader(e.Result, true))
+            {
+                _feedString = sr.ReadToEnd();
+            }
+            Assert.IsTrue(&quot;0:60 1:63 2:120 3:109 4:108 5:32&quot; == decodeStringContent(rssContent), &quot;Feed does not start with &#39;&amp;lt;?xml &#39;&quot;);
+
+            // doSomething(_feedString);
+        }
+    }
+
+    public static string decodeStringContent(string _in, int _maxItems = 5)
+    {
+        string _decoding = &quot;&quot;;
+        int _i = 0;
+        foreach (char x in _in)
+        {
+            if (_decoding != &quot;&quot;) _decoding = _decoding + &quot; &quot;;
+            _decoding = _decoding + _i++.ToString() + &quot;:&quot; + Convert.ToInt32(x);
+            if (_maxItems &amp;gt; 0 &amp;amp;&amp;amp; _i &amp;gt; _maxItems) break;
+        }
+        return _decoding;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29577811</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Customize a full product RSS feed on Magento</title>
+            <category scheme="http://stackoverflow.com/tags" term="magento" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="feed" />
+        <author>
+            <name>techie-shop</name>
+            <uri>http://stackoverflow.com/users/3660531</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29577811/customize-a-full-product-rss-feed-on-magento" />
+        <published>2015-04-11T12:21:13Z</published>
+        <updated>2015-04-11T12:49:59Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;The default RSS feed inside Magento provide product RSS feed on categories, how could I add a full product feed rather than categories that ends up a lot of feeds becoming hard to manage?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29565721</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Retrieving an enclosure image URL via PHP [duplicate]</title>
+            <category scheme="http://stackoverflow.com/tags" term="php" />
+            <category scheme="http://stackoverflow.com/tags" term="xml" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Chase Livingston</name>
+            <uri>http://stackoverflow.com/users/4774397</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29565721/retrieving-an-enclosure-image-url-via-php" />
+        <published>2015-04-10T15:51:47Z</published>
+        <updated>2015-04-11T17:13:30Z</updated>
+        <summary type="html">
+            
+&lt;div class=&quot;question-status question-originals-of-duplicate&quot;&gt;
+    &lt;p&gt;This question already has an answer here:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;/questions/22797007/php-read-xml-podcast-rss-feed&quot; dir=&quot;ltr&quot;&gt;PHP Read XML Podcast RSS Feed&lt;/a&gt;
+                &lt;span class=&quot;question-originals-answer-count&quot;&gt;
+                    2 answers
+                &lt;/span&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+            &lt;p&gt;I&#39;m trying to retrieve an enclosure&#39;s URL via PHP, but am getting an error that says the enclosure is a non-object. This code works when I run it locally, but doesn&#39;t seem to work when uploaded to my server and run directly on the site. It&#39;s being inserted into an Expression Engine page, fwiw.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$rss = new DOMDocument();
+$rss-&amp;gt;load(&#39;http://www.blueskyresumes.com/blog/feed/&#39;);
+$feed = array();
+
+foreach ($rss-&amp;gt;getElementsByTagName(&#39;item&#39;) as $node) {
+    $item = array( 
+        &#39;title&#39; =&amp;gt; $node-&amp;gt;getElementsByTagName(&#39;title&#39;)-&amp;gt;item(0)-&amp;gt;nodeValue,
+                        &#39;desc&#39; =&amp;gt; $node-&amp;gt;getElementsByTagName(&#39;description&#39;)-&amp;gt;item(0)-&amp;gt;nodeValue,
+                        &#39;link&#39; =&amp;gt; $node-&amp;gt;getElementsByTagName(&#39;link&#39;)-&amp;gt;item(0)-&amp;gt;nodeValue,
+                        &#39;date&#39; =&amp;gt; $node-&amp;gt;getElementsByTagName(&#39;pubDate&#39;)-&amp;gt;item(0)-&amp;gt;nodeValue,
+                        &#39;creator&#39; =&amp;gt; $node-&amp;gt;getElementsByTagName(&#39;creator&#39;)-&amp;gt;item(0)-&amp;gt;nodeValue,
+                        &#39;image&#39; =&amp;gt; $node-&amp;gt;getElementsByTagName(&#39;enclosure&#39;)-&amp;gt;item(0) ? $node-&amp;gt;getElementsByTagName(&#39;enclosure&#39;)-&amp;gt;item(0)-&amp;gt;getAttribute(&#39;url&#39;) : &#39;&#39;,
+                        );
+                    array_push($feed, $item);
+}
+
+$limit = 3;
+for ($x = 0; $x &amp;lt; $limit; $x++) {
+                    $title = str_replace(&#39; &amp;amp; &#39;, &#39; &amp;amp;amp; &#39;, $feed[$x][&#39;title&#39;]);
+                    $link = $feed[$x][&#39;link&#39;];
+                    $description = $feed[$x][&#39;desc&#39;];
+                    $date = date(&#39;l F d, Y&#39;, strtotime($feed[$x][&#39;date&#39;]));
+                    $author = $feed[$x][&#39;creator&#39;];
+                    $image = $feed[$x][&#39;image&#39;];
+                    echo &#39;&amp;lt;span&amp;gt;&amp;lt;img src=&quot;&#39;. $image . &#39;&quot; /&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;h4 class=&quot;blog_title&quot;&amp;gt;&amp;lt;a href=&quot;&#39;.$link.&#39;&quot; title=&quot;&#39;.$title.&#39;&quot;&amp;gt;&#39;.$title.&#39;&amp;lt;/a&amp;gt;&amp;lt;br /&amp;gt;&#39;;
+                    echo &#39;&amp;lt;small&amp;gt;&amp;lt;em&amp;gt;by &#39;.$author.&#39;&amp;lt;/em&amp;gt;&amp;lt;/small&amp;gt;&amp;lt;/h4&amp;gt;&#39;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29562168</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">How to postpone some images coming from RSS to be loaded after all other elements?</title>
+            <category scheme="http://stackoverflow.com/tags" term="php" />
+            <category scheme="http://stackoverflow.com/tags" term="performance" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="joomla-module" />
+            <category scheme="http://stackoverflow.com/tags" term="joomla3.4" />
+        <author>
+            <name>zkanoca</name>
+            <uri>http://stackoverflow.com/users/1494102</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29562168/how-to-postpone-some-images-coming-from-rss-to-be-loaded-after-all-other-element" />
+        <published>2015-04-10T13:02:04Z</published>
+        <updated>2015-04-10T15:08:00Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I have created a Joomla module that reads RSS news from another web site and shows them as slider. I have utilized Bootstrap 3 carousel for creating that slider.&lt;/p&gt;
+
+&lt;p&gt;Now my page load time is a bit long (approx. 12-13 sec). Because 10 images slows down page loading. &lt;/p&gt;
+
+&lt;p&gt;I want slider to load after all other content. So while users start reading the page, the images to shown later will be loaded before they are displayed.&lt;/p&gt;
+
+&lt;p&gt;I know it is so silly and not suitable but I have tried to add &lt;code&gt;defer&lt;/code&gt; and &lt;code&gt;async&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;How can I make it faster? I think there is nothing to do with my own page. It is more important to make RSS service of source web site (runs wordpress) faster.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29560348</id>
+        <re:rank scheme="http://stackoverflow.com">-1</re:rank>
+        <title type="text">Android - Read RSS in android studio [closed]</title>
+            <category scheme="http://stackoverflow.com/tags" term="android" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Javier</name>
+            <uri>http://stackoverflow.com/users/4691309</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29560348/android-read-rss-in-android-studio" />
+        <published>2015-04-10T11:31:23Z</published>
+        <updated>2015-04-10T12:04:03Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I would like to read a RSS url in my android app and I really don&#180;t know how to start, I&#180;ve been looking for it in google but there too many difficult ways, anyone know how to do it?&lt;/p&gt;
+
+&lt;p&gt;This is the url:
+&lt;a href=&quot;http://futbol.as.com/rss/futbol/copa_del_rey.xml&quot; rel=&quot;nofollow&quot;&gt;http://futbol.as.com/rss/futbol/copa_del_rey.xml&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thank u&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29556504</id>
+        <re:rank scheme="http://stackoverflow.com">-1</re:rank>
+        <title type="text">What is the JSON equivalent of RSS?</title>
+            <category scheme="http://stackoverflow.com/tags" term="xml" />
+            <category scheme="http://stackoverflow.com/tags" term="json" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="feed" />
+            <category scheme="http://stackoverflow.com/tags" term="rss-reader" />
+        <author>
+            <name>Muis</name>
+            <uri>http://stackoverflow.com/users/435733</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29556504/what-is-the-json-equivalent-of-rss" />
+        <published>2015-04-10T08:15:27Z</published>
+        <updated>2015-04-13T07:37:51Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I need to publish feeds in my application, and I want to use a standard format like RSS. But my application data is in JSON, and I would rather not convert all my objects. &lt;/p&gt;
+
+&lt;p&gt;So is there a format that is equivalent to RSS but uses JSON?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29549480</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Yahoo pipes - compare item content from multiple feeds</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="compare" />
+            <category scheme="http://stackoverflow.com/tags" term="yahoo-pipes" />
+        <author>
+            <name>Bane</name>
+            <uri>http://stackoverflow.com/users/4767277</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29549480/yahoo-pipes-compare-item-content-from-multiple-feeds" />
+        <published>2015-04-09T21:34:04Z</published>
+        <updated>2015-04-13T13:41:27Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;In yahoo pipes I have two rss feeds. 
+Now I want to grab item content from second feed to compare it with item content in first feed.
+Based on GUIDs. 
+If it matches I want the items from first feed in my output. &lt;/p&gt;
+
+&lt;p&gt;Can someone help pls?&lt;/p&gt;
+
+&lt;p&gt;Thanks &lt;/p&gt;
+
+&lt;p&gt;Bane &lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29547709</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Replace text from generated RSS feeds</title>
+            <category scheme="http://stackoverflow.com/tags" term="php" />
+            <category scheme="http://stackoverflow.com/tags" term="string" />
+            <category scheme="http://stackoverflow.com/tags" term="replace" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="str-replace" />
+        <author>
+            <name>Jeff Sydor</name>
+            <uri>http://stackoverflow.com/users/4746751</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29547709/replace-text-from-generated-rss-feeds" />
+        <published>2015-04-09T19:52:43Z</published>
+        <updated>2015-04-09T19:56:18Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;Here is the page with the problem, &lt;a href=&quot;http://knowgreaterpartnership.com/secrets/&quot; rel=&quot;nofollow&quot;&gt;http://knowgreaterpartnership.com/secrets/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The RSS generator that we use is inserting inline html tags on the &quot;events&quot; feed such as &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;i&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/i&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is the code I&#39;ve ended up with to try and remove these bits from my code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&quot;right&quot; class=&quot;last&quot;&amp;gt;
+
+    &amp;lt;h1&amp;gt;&amp;lt;?php esc_html_e( &#39;Buchanan Events&#39;, &#39;Fusion&#39; ); ?&amp;gt;&amp;lt;/h1&amp;gt;
+    &amp;lt;article id=&quot;jobs&quot;&amp;gt;
+        &amp;lt;?php if ( function_exists( &#39;fetch_feed&#39; ) ) { ?&amp;gt;
+            &amp;lt;?php include_once(ABSPATH . WPINC . &#39;/feed.php&#39;);
+                $feed = fetch_feed( &#39;http://www.bipc.com/rssfeeds/rss.aspx?id=35&#39; );
+                $feednew = str_replace( array( &#39;&amp;lt;br&amp;gt;&#39;, &#39;&amp;lt;i&amp;gt;&#39;, &#39;&amp;lt;/i&amp;gt;&#39; ), &#39;&#39;, $feed );
+                $limit = $feednew -&amp;gt; get_item_quantity(5);
+                $items = $feednew -&amp;gt; get_items(0, $limit);
+            if ( !$items ) {
+                echo &quot;problem&quot;;
+            }
+            else {
+                //everything&#39;s cool
+                foreach( $items as $item ){ ?&amp;gt;
+
+                    &amp;lt;h2 class=&quot;post&quot;&amp;gt;&amp;lt;a class=&quot;link&quot; href=&quot;&amp;lt;?php echo $item -&amp;gt; get_permalink(); ?&amp;gt;&quot; target=&quot;_blank&quot;&amp;gt;&amp;lt;?php echo $item -&amp;gt; get_title(); ?&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
+                    &amp;lt;p class=&quot;date&quot;&amp;gt;&amp;lt;?php echo $item -&amp;gt; get_date( &#39;F j, Y&#39; ); ?&amp;gt;&amp;lt;/p&amp;gt;
+                    &amp;lt;hr&amp;gt;
+
+                &amp;lt;?php }
+            } ?&amp;gt;
+        &amp;lt;?php } ?&amp;gt;
+
+    &amp;lt;/article&amp;gt;
+
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;I&#39;m trying to use &lt;strong&gt;str_replace()&lt;/strong&gt; to search for the &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;i&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/i&amp;gt;&lt;/code&gt; tags and replace them with nothing so that the rest of the text flows.&lt;/p&gt;
+
+&lt;p&gt;If I&#39;m not using the right method, please let me know. Thanks!&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29547588</id>
+        <re:rank scheme="http://stackoverflow.com">-2</re:rank>
+        <title type="text">Implement a UIRefreshControl for an RSS feed in a UITableView</title>
+            <category scheme="http://stackoverflow.com/tags" term="ios" />
+            <category scheme="http://stackoverflow.com/tags" term="uitableview" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="feeds" />
+            <category scheme="http://stackoverflow.com/tags" term="uirefreshcontrol" />
+        <author>
+            <name>Rayyan</name>
+            <uri>http://stackoverflow.com/users/3848702</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29547588/implement-a-uirefreshcontrol-for-an-rss-feed-in-a-uitableview" />
+        <published>2015-04-09T19:47:03Z</published>
+        <updated>2015-04-09T22:09:49Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I&#39;ve realized how to set up my UI refresh control in Xcode and it looks okay, but that&#39;s just it. It doesn&#39;t actually refresh my RSS feed. What I&#39;m looking for is what to write inside my refresh void in order to get my &lt;code&gt;UIRefreshControl&lt;/code&gt; going. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+[refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+self.refreshControl = refreshControl;
+
+-(void)refresh {
+    // HERE IS WHERE I AM STUCK .
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29547272</id>
+        <re:rank scheme="http://stackoverflow.com">-1</re:rank>
+        <title type="text">Is there a way to get Facebook event post feed via RSS?</title>
+            <category scheme="http://stackoverflow.com/tags" term="json" />
+            <category scheme="http://stackoverflow.com/tags" term="facebook" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>solomon132</name>
+            <uri>http://stackoverflow.com/users/4770864</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29547272/is-there-a-way-to-get-facebook-event-post-feed-via-rss" />
+        <published>2015-04-09T19:28:52Z</published>
+        <updated>2015-04-09T19:28:52Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I am looking to find RSS postfeed for one Facebook event, is there a way to get it?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29533216</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Some websites (hootsuite, facebook) see our old website instead of the new one</title>
+            <category scheme="http://stackoverflow.com/tags" term="website" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="hootsuite" />
+        <author>
+            <name>Femke</name>
+            <uri>http://stackoverflow.com/users/3604344</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29533216/some-websites-hootsuite-facebook-see-our-old-website-instead-of-the-new-one" />
+        <published>2015-04-09T08:13:11Z</published>
+        <updated>2015-04-09T08:13:11Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;In January of this year, a new website of own of our clients went live. They had an other one before that. So I will refer to the old one, as the previous website, and the new one as the one that went live in January.&lt;/p&gt;
+
+&lt;p&gt;The problem now is that some websites still see the old website. For example, we have a RSS feed for Hootsuite. But Hootsuite doesn&#39;t see the RSS feed as an valid one. So I checked the RSS feed using &lt;a href=&quot;http://feedvalidator.org/&quot; rel=&quot;nofollow&quot;&gt;http://feedvalidator.org/&lt;/a&gt;, and came to the conclusion that it renders the old website. That results in an 404 error, because they hadn&#39;t a RSS feed on the old website. If you view the feed page in the browser, it works fine.&lt;/p&gt;
+
+&lt;p&gt;I have no clue as to why it still renders the old website sometimes, and I don&#39;t know where (and how) I look for a solution. So I hope someone can help me, or at least point me in the right direction.&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29531657</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">A nice looking RSS Feed display</title>
+            <category scheme="http://stackoverflow.com/tags" term="html" />
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+        <author>
+            <name>Roberto Flores</name>
+            <uri>http://stackoverflow.com/users/4257259</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29531657/a-nice-looking-rss-feed-display" />
+        <published>2015-04-09T06:50:06Z</published>
+        <updated>2015-04-09T06:50:06Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I was wondering if it is possible to have a display like the one this site has for missing children: &lt;a href=&quot;http://www.missingkids.com/home&quot; rel=&quot;nofollow&quot;&gt;http://www.missingkids.com/home&lt;/a&gt;. I would like to have the rss feed I grabbed from another site and display it using something similar as the site above has done. Is there a way to do that? Any information would be helpful. Thank You&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29530511</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Yahoo Pipes - two RSS feeds - Compare item contents based on IMDB Link</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="compare" />
+            <category scheme="http://stackoverflow.com/tags" term="yahoo-pipes" />
+            <category scheme="http://stackoverflow.com/tags" term="imdb" />
+        <author>
+            <name>Bane</name>
+            <uri>http://stackoverflow.com/users/4767277</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29530511/yahoo-pipes-two-rss-feeds-compare-item-contents-based-on-imdb-link" />
+        <published>2015-04-09T05:32:57Z</published>
+        <updated>2015-04-13T21:41:02Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;i have two RSS feeds. First one is a news site rss feed with one IMDB Link in every &quot;item.description&quot;.
+example:&lt;/p&gt;
+
+&lt;p&gt;item.title: 
+Baymax - Riesiges Robowabohu&lt;/p&gt;
+
+&lt;p&gt;item.description:&lt;/p&gt;
+
+&lt;p&gt;Release Date...: 07.04.2015&lt;/p&gt;
+
+&lt;p&gt;Imdb...........: &lt;a href=&quot;http://www.imdb.com/title/tt2245084&quot; rel=&quot;nofollow&quot;&gt;http://www.imdb.com/title/tt2245084&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Second one is my IMBD watchlist.
+example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;item&amp;gt;
+  &amp;lt;pubDate&amp;gt;Wed, 08 Apr 2015 08:26:05 GMT&amp;lt;/pubDate&amp;gt;
+    &amp;lt;title&amp;gt;Big Hero 6 (2014)&amp;lt;/title&amp;gt;
+    &amp;lt;link&amp;gt;http://www.imdb.com/title/tt2245084/&amp;lt;/link&amp;gt;;
+    &amp;lt;guid&amp;gt;http://www.imdb.com/title/tt2245084/&amp;lt;/guid&amp;gt;;
+    &amp;lt;description&amp;gt;&amp;lt;/description&amp;gt;
+&amp;lt;/item&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As u can see i can not compare/link the title because one title is in german, the other one the original US title. Now my idea is to compare it based on the IMDB link.&lt;/p&gt;
+
+&lt;p&gt;Now i want an output when a new movie appears in the first rss feed (news site) that it compares it with mit IMDB watchlist rss feed based on the IMDB Link.&lt;/p&gt;
+
+&lt;p&gt;how can I implement this with yahoo pipes?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/29527891</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Yahoo Pipes - Replacing RSS text from a CSV</title>
+            <category scheme="http://stackoverflow.com/tags" term="rss" />
+            <category scheme="http://stackoverflow.com/tags" term="yahoo-pipes" />
+        <author>
+            <name>Chris</name>
+            <uri>http://stackoverflow.com/users/4766640</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/29527891/yahoo-pipes-replacing-rss-text-from-a-csv" />
+        <published>2015-04-09T00:52:29Z</published>
+        <updated>2015-04-09T00:52:29Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;My goal is to replace the airport names (eg JFK, BOS, DFW) in an RSS feed with the actual cities where these airports are located (eg New York, Boston, Dallas)&lt;/p&gt;
+
+&lt;p&gt;I have a CSV file that I&#39;m hosting which pairs this data in three columns:&lt;/p&gt;
+
+&lt;p&gt;1 Airport location
+2 Three-letter airport code
+3 Four-letter airport code&lt;/p&gt;
+
+&lt;p&gt;I have been able to source the RSS feeds, and manually use the Regex Operator to replace eg JFK with New York, but I can&#39;t figure out how to make Regex connect with the CSV file.&lt;/p&gt;
+
+&lt;p&gt;Am I on the right track, or going about this the wrong way? Is this maybe not possible with Pipes?&lt;/p&gt;
+
+        </summary>
+    </entry>
+</feed>

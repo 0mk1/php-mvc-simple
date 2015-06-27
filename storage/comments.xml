@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comments>
+  <entry topic_id="3">
+    <id>1</id>
+    <topic_id>3</topic_id>
+    <comment>324</comment>
+    <created_at>2015-02-11</created_at>
+    <updated_at>2015-02-11</updated_at>
+  </entry>
+  <entry topic_id="3">
+    <id>2</id>
+    <topic_id>3</topic_id>
+    <comment>324</comment>
+    <created_at>2015-02-11</created_at>
+    <updated_at>2015-02-11</updated_at>
+  </entry>
+  <entry topic_id="2">
+    <id>3</id>
+    <topic_id>3</topic_id>
+    <comment>324</comment>
+    <created_at>2015-02-11</created_at>
+    <updated_at>2015-02-11</updated_at>
+  </entry>
+</comments>

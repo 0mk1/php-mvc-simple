@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+  <entry id="1">
+    <id>1</id>
+    <title>this is my post!</title>
+    <date>2013-01-03</date>
+    <description>simple description</description>
+  </entry>
+  <entry id="2">
+    <id>2</id>
+    <title>This is my post!</title>
+    <date>2013-01-03</date>
+    <description>Simple description</description>
+  </entry>
+  <entry id="3">
+    <id>3</id>
+    <title>This is my post!</title>
+    <date>2013-01-03</date>
+    <description>Simple description</description>
+  </entry>
+</topics>
