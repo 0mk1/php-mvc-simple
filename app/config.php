@@ -18,7 +18,7 @@ ini_set("display_errors", 1);
 |
 */
 
-define('DB_TYPE', 'mysql');
+define('DB_TYPE', 'json');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'laravelrssapp');
 define('DB_USER', 'root');
