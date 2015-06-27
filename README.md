@@ -1,2 +1,2 @@
 # php-mvc-simple
-PHP MVC simple app - no framework ! 
+PHP MVC simple app framework ! 
